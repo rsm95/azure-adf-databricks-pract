@@ -1,0 +1,9 @@
+{
+	"name": "adf-rsm-pract",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "d9db8dc2-9ef0-42f9-8d92-bb6571db781e",
+		"tenantId": "1e510ef7-9c3a-4719-97cd-791082608562"
+	}
+}
