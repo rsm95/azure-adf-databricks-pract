@@ -7,6 +7,77 @@
 		},
 		"annotations": [],
 		"type": "AzurePostgreSqlTable",
-		"schema": []
+		"schema": [
+			{
+				"name": "COUNTRY",
+				"type": "text",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "STATE",
+				"type": "text",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "TABLE_NUMBER",
+				"type": "text",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "EFFECTIVE_DATE",
+				"type": "timestamp without time zone",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "EXPIRATION_DATE",
+				"type": "timestamp without time zone",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "KEY1",
+				"type": "text",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "KEY2",
+				"type": "text",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "KEY3",
+				"type": "text",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "KEY4",
+				"type": "text",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "FACTOR",
+				"type": "numeric",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "ID",
+				"type": "text",
+				"precision": 0,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "public",
+			"table": "datafile_combined"
+		}
 	}
 }
