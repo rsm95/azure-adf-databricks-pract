@@ -10,8 +10,8 @@
 		"schema": [
 			{
 				"name": "ID",
-				"type": "text",
-				"precision": 0,
+				"type": "numeric",
+				"precision": 38,
 				"scale": 0
 			},
 			{
