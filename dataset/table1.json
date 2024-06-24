@@ -1,5 +1,5 @@
 {
-	"name": "AzurePostgreSqlTable5",
+	"name": "table1",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_AzurePostgreSql1",
@@ -15,25 +15,19 @@
 				"scale": 0
 			},
 			{
-				"name": "Class_code",
+				"name": "BGIITerritory",
 				"type": "text",
 				"precision": 0,
 				"scale": 0
 			},
 			{
-				"name": "Coverage85LC",
+				"name": "BGIICoverage",
 				"type": "text",
 				"precision": 0,
 				"scale": 0
 			},
 			{
-				"name": "Symbo85LC",
-				"type": "text",
-				"precision": 0,
-				"scale": 0
-			},
-			{
-				"name": "Constuction_Code",
+				"name": "BGIISymbol",
 				"type": "text",
 				"precision": 0,
 				"scale": 0
@@ -47,7 +41,7 @@
 		],
 		"typeProperties": {
 			"schema": "public",
-			"table": "table4"
+			"table": "table1"
 		}
 	}
 }

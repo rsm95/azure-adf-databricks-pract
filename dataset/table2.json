@@ -1,0 +1,29 @@
+{
+	"name": "table2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_AzurePostgreSql1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "text",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "FactorB1LC",
+				"type": "numeric",
+				"precision": 10,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "public",
+			"table": "table2"
+		}
+	}
+}
