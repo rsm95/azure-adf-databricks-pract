@@ -42,7 +42,11 @@
 			],
 			"sinks": [
 				{
-					"name": "sink1"
+					"dataset": {
+						"referenceName": "ds_sink_combinedtable",
+						"type": "DatasetReference"
+					},
+					"name": "combinedTables"
 				}
 			],
 			"transformations": [
@@ -109,7 +113,7 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> table5",
-				"table1, table2 join(FactorBGII == FactorB1LC,",
+				"table4, table1 join(table4@ID == table1@ID,",
 				"     joinType:'left',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
@@ -132,7 +136,7 @@
 				"join4 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true) ~> combinedTables"
 			]
 		}
 	}
