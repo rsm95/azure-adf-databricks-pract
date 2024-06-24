@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "df1",
+				"name": "dfdatafile",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {

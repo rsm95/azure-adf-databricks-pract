@@ -10,7 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"container": "pract1"
+				"folderPath": "output_combined",
+				"container": "dataset"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
