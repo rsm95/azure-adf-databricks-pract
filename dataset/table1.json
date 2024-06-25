@@ -1,0 +1,47 @@
+{
+	"name": "table1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_AzurePostgreSql1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "text",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "BGIITerritory",
+				"type": "text",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "BGIICoverage",
+				"type": "text",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "BGIISymbol",
+				"type": "text",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "FactorBGII",
+				"type": "numeric",
+				"precision": 10,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "public",
+			"table": "table1"
+		}
+	}
+}

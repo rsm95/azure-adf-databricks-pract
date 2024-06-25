@@ -1,0 +1,29 @@
+{
+	"name": "AzurePostgreSqlTable6",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_AzurePostgreSql1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [
+			{
+				"name": "Territory",
+				"type": "text",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "Factor85TERR",
+				"type": "numeric",
+				"precision": 10,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "public",
+			"table": "table5_85terrmultlc"
+		}
+	}
+}

@@ -1,0 +1,173 @@
+{
+	"name": "dataflow3",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "table1",
+						"type": "DatasetReference"
+					},
+					"name": "table1"
+				},
+				{
+					"dataset": {
+						"referenceName": "table2",
+						"type": "DatasetReference"
+					},
+					"name": "table2"
+				},
+				{
+					"dataset": {
+						"referenceName": "table3",
+						"type": "DatasetReference"
+					},
+					"name": "table3"
+				},
+				{
+					"dataset": {
+						"referenceName": "table4",
+						"type": "DatasetReference"
+					},
+					"name": "table4"
+				},
+				{
+					"dataset": {
+						"referenceName": "table5",
+						"type": "DatasetReference"
+					},
+					"name": "table5"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_sink_combinedtable",
+						"type": "DatasetReference"
+					},
+					"name": "combinedTables"
+				}
+			],
+			"transformations": [
+				{
+					"name": "join1"
+				},
+				{
+					"name": "join2"
+				},
+				{
+					"name": "join3"
+				},
+				{
+					"name": "join4"
+				},
+				{
+					"name": "sort1"
+				},
+				{
+					"name": "select1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          ID as string,",
+				"          BGIITerritory as string,",
+				"          BGIICoverage as string,",
+				"          BGIISymbol as string,",
+				"          FactorBGII as decimal(10,2)",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     inferDriftedColumnTypes: true,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> table1",
+				"source(output(",
+				"          ID as string,",
+				"          FactorB1LC as decimal(10,2)",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> table2",
+				"source(output(",
+				"          ID as string,",
+				"          Coverage as string,",
+				"          FactorC2LC as decimal(10,2)",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     inferDriftedColumnTypes: true,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> table3",
+				"source(output(",
+				"          ID as string,",
+				"          Class_code as string,",
+				"          Coverage85LC as string,",
+				"          Symbo85LC as string,",
+				"          Constuction_Code as string,",
+				"          FactorBGII as decimal(10,2)",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     inferDriftedColumnTypes: true,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> table4",
+				"source(output(",
+				"          ID as string,",
+				"          Territory as string,",
+				"          Factor85TERR as decimal(10,2)",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     inferDriftedColumnTypes: true,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> table5",
+				"table4, table1 join(table4@ID == table1@ID,",
+				"     joinType:'outer',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1",
+				"join1, table2 join(table4@ID == table2@ID,",
+				"     joinType:'outer',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join2",
+				"join2, table3 join(table4@ID == table3@ID,",
+				"     joinType:'outer',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join3",
+				"join3, table5 join(table4@ID == table5@ID,",
+				"     joinType:'outer',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join4",
+				"select1 sort(asc(substring(ID,1), false)) ~> sort1",
+				"join4 select(mapColumn(",
+				"          ID = table4@ID,",
+				"          Class_code,",
+				"          Coverage85LC,",
+				"          Symbo85LC,",
+				"          Constuction_Code,",
+				"          FactorBGII = table4@FactorBGII,",
+				"          BGIITerritory,",
+				"          BGIICoverage,",
+				"          BGIISymbol,",
+				"          FactorBGII = table1@FactorBGII,",
+				"          FactorB1LC,",
+				"          Coverage,",
+				"          FactorC2LC,",
+				"          Territory,",
+				"          Factor85TERR",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"sort1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> combinedTables"
+			]
+		}
+	}
+}

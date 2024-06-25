@@ -1,0 +1,44 @@
+{
+	"name": "ds_source_5tables",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "table1_BGIILC",
+				"container": "dataset2"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "ID",
+				"type": "String"
+			},
+			{
+				"name": "BGIITerritory",
+				"type": "String"
+			},
+			{
+				"name": "BGIICoverage",
+				"type": "String"
+			},
+			{
+				"name": "BGIISymbol",
+				"type": "String"
+			},
+			{
+				"name": "FactorBGII",
+				"type": "String"
+			}
+		]
+	}
+}

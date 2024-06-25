@@ -1,0 +1,48 @@
+{
+	"name": "ds_table4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "table4_85LC",
+				"container": "dataset2"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "ID",
+				"type": "String"
+			},
+			{
+				"name": "Class_code",
+				"type": "String"
+			},
+			{
+				"name": "Coverage85LC",
+				"type": "String"
+			},
+			{
+				"name": "Symbo85LC",
+				"type": "String"
+			},
+			{
+				"name": "Constuction_Code",
+				"type": "String"
+			},
+			{
+				"name": "FactorBGII",
+				"type": "String"
+			}
+		]
+	}
+}

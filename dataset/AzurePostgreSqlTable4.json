@@ -1,0 +1,29 @@
+{
+	"name": "AzurePostgreSqlTable4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_AzurePostgreSql1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [
+			{
+				"name": "Coverage",
+				"type": "text",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "FactorC2LC",
+				"type": "numeric",
+				"precision": 10,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "public",
+			"table": "table3_c2lc"
+		}
+	}
+}

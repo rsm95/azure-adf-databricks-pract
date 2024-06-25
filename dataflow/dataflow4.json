@@ -1,0 +1,77 @@
+{
+	"name": "dataflow4",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_source_5tables",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_table4",
+						"type": "DatasetReference"
+					},
+					"name": "source2"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "join1"
+				},
+				{
+					"name": "select1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          ID as string,",
+				"          BGIITerritory as string,",
+				"          BGIICoverage as string,",
+				"          BGIISymbol as string,",
+				"          FactorBGII as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     inferDriftedColumnTypes: true,",
+				"     ignoreNoFilesFound: false,",
+				"     fileList: true) ~> source1",
+				"source(output(",
+				"          ID as string,",
+				"          Class_code as string,",
+				"          Coverage85LC as string,",
+				"          Symbo85LC as string,",
+				"          Constuction_Code as string,",
+				"          FactorBGII as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source2",
+				"source1, source2 join(source1@ID == source2@ID,",
+				"     joinType:'outer',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1",
+				"join1 select(mapColumn(",
+				"          BGIITerritory,",
+				"          BGIICoverage,",
+				"          BGIISymbol,",
+				"          FactorBGII = source1@FactorBGII,",
+				"          ID = source2@ID,",
+				"          Class_code,",
+				"          Coverage85LC,",
+				"          Symbo85LC,",
+				"          Constuction_Code,",
+				"          FactorBGII = source2@FactorBGII",
+				"     ),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> select1"
+			]
+		}
+	}
+}

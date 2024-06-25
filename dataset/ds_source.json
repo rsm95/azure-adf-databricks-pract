@@ -1,0 +1,44 @@
+{
+	"name": "ds_source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "output_combined",
+				"container": "dataset"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "CustomerID",
+				"type": "String"
+			},
+			{
+				"name": "Genre",
+				"type": "String"
+			},
+			{
+				"name": "Age",
+				"type": "String"
+			},
+			{
+				"name": "Annual Income (k$)",
+				"type": "String"
+			},
+			{
+				"name": "Spending Score (1-100)",
+				"type": "String"
+			}
+		]
+	}
+}

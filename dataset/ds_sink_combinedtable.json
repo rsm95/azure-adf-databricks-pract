@@ -1,0 +1,23 @@
+{
+	"name": "ds_sink_combinedtable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "output_combined",
+				"container": "dataset"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

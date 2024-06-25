@@ -1,0 +1,40 @@
+{
+	"name": "ds_DelimitedText3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "\"public\".\"table1_bgiilc\".txt",
+				"container": "dataset"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "BGIITerritory",
+				"type": "String"
+			},
+			{
+				"name": "BGIICoverage",
+				"type": "String"
+			},
+			{
+				"name": "BGIISymbol",
+				"type": "String"
+			},
+			{
+				"name": "FactorBGII",
+				"type": "String"
+			}
+		]
+	}
+}

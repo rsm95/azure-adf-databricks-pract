@@ -1,0 +1,53 @@
+{
+	"name": "AzurePostgreSqlTable5",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_AzurePostgreSql1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "text",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "Class_code",
+				"type": "text",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "Coverage85LC",
+				"type": "text",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "Symbo85LC",
+				"type": "text",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "Constuction_Code",
+				"type": "text",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "FactorBGII",
+				"type": "numeric",
+				"precision": 10,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "public",
+			"table": "table4"
+		}
+	}
+}
