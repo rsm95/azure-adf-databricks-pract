@@ -42,7 +42,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "AzurePostgreSqlTable2",
+						"referenceName": "AzurePostgreSqlTable1",
 						"type": "DatasetReference"
 					}
 				],
