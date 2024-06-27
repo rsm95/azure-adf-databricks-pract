@@ -1,0 +1,76 @@
+{
+	"name": "ds_project_sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"enter_file_name": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().enter_file_name",
+					"type": "Expression"
+				},
+				"container": "finalproject"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "STATE_CODE",
+				"type": "String"
+			},
+			{
+				"name": "TABLE_NUMBER",
+				"type": "String"
+			},
+			{
+				"name": "EFFECTIVE_DATE",
+				"type": "String"
+			},
+			{
+				"name": "EXP_DATE",
+				"type": "String"
+			},
+			{
+				"name": "TERR_CODE",
+				"type": "String"
+			},
+			{
+				"name": "Min_Amount",
+				"type": "String"
+			},
+			{
+				"name": "Max_Amount",
+				"type": "String"
+			},
+			{
+				"name": "DEDUCTIBLE",
+				"type": "String"
+			},
+			{
+				"name": "Symbol_Number",
+				"type": "String"
+			},
+			{
+				"name": "Symbol_Alphabets",
+				"type": "String"
+			},
+			{
+				"name": "FACTOR",
+				"type": "String"
+			}
+		]
+	}
+}

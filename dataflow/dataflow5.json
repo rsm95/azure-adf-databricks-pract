@@ -1,0 +1,117 @@
+{
+	"name": "dataflow5",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_project_source",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_project_source",
+						"type": "DatasetReference"
+					},
+					"name": "source2"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_project_source",
+						"type": "DatasetReference"
+					},
+					"name": "source3"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_project_sink",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "union1"
+				},
+				{
+					"name": "union2"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          STATE_CODE as string,",
+				"          TABLE_NUMBER as string,",
+				"          EFFECTIVE_DATE as string,",
+				"          EXP_DATE as string,",
+				"          TERR_CODE as string,",
+				"          Min_Amount as string,",
+				"          Max_Amount as string,",
+				"          DEDUCTIBLE as string,",
+				"          Symbol_Number as string,",
+				"          Symbol_Alphabets as string,",
+				"          FACTOR as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source(output(",
+				"          STATE_CODE as string,",
+				"          TABLE_NUMBER as string,",
+				"          EFFECTIVE_DATE as string,",
+				"          EXP_DATE as string,",
+				"          TERR_CODE as string,",
+				"          Min_Amount as string,",
+				"          Max_Amount as string,",
+				"          DEDUCTIBLE as string,",
+				"          Symbol_Number as string,",
+				"          Symbol_Alphabets as string,",
+				"          FACTOR as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source2",
+				"source(output(",
+				"          STATE_CODE as string,",
+				"          TABLE_NUMBER as string,",
+				"          EFFECTIVE_DATE as string,",
+				"          EXP_DATE as string,",
+				"          TERR_CODE as string,",
+				"          Min_Amount as string,",
+				"          Max_Amount as string,",
+				"          DEDUCTIBLE as string,",
+				"          Symbol_Number as string,",
+				"          Symbol_Alphabets as string,",
+				"          FACTOR as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source3",
+				"source1, source2 union(byName: true)~> union1",
+				"union1, source3 union(byName: true)~> union2",
+				"union2 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          STATE_CODE as string,",
+				"          TABLE_NUMBER as string,",
+				"          EFFECTIVE_DATE as string,",
+				"          EXP_DATE as string,",
+				"          TERR_CODE as string,",
+				"          Min_Amount as string,",
+				"          Max_Amount as string,",
+				"          DEDUCTIBLE as string,",
+				"          Symbol_Number as string,",
+				"          Symbol_Alphabets as string,",
+				"          FACTOR as string",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}
